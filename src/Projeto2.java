@@ -1,71 +1,72 @@
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Vinícius Luis da Silva
+ *         Pedro Henrique de Novaes
+ *         Sidnei Lanser
+ *         Gabriel Salvador
  */
-
 public class Projeto2 implements FormatoAudio{
-//asd
-    /**
-     * @param args the command line arguments
-     */
-  
-    private String extension = null;
-    private Projeto2 file;
+
+    private Projeto2 arquivo;
     
     @Override
-    public void abrir(String s) {
-       
-            String[] formato = s.split(".");
-            extension = formato[formato.length-1];
-       
-        switch(extension){
-            case "aiff": 
-               
-            break;
-            
-            case "wma": 
+    public void abrir(String caminho) throws ExtensaoNaoSuportada {
+        String extensao = caminho.split(".")[caminho.split(".").length - 1];
+        
+        switch (extensao) {
+            case "aiff":
+                this.arquivo = new AIFFObject();
+                break;
+            case "wma":
+                this.arquivo = new WMAObject();
+                break;
+            case "wav":
+                this.arquivo = new WAVObject();
+                break;
+            default:
+                throw new ExtensaoNaoSuportada(extensao);
                 
-            break;
-            
-            case "wav": 
-                
-            break;
         }
+        this.arquivo.abrir(caminho);
     }
 
     @Override
     public void reproduzir() {
-        
-        
+        this.arquivo.reproduzir();
     }
 
     @Override
     public void pausar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.arquivo.pausar();
     }
 
     @Override
     public void parar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.arquivo.parar();
     }
 
     @Override
     public void avancar(int segundos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.arquivo.avancar(segundos);
     }
 
     @Override
     public void retomar(int segundos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.arquivo.retomar(segundos);
     }
 
     @Override
     public void liberar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.arquivo.liberar();
+    }
+    
+    public void reproduzirSimples(String caminho) throws ExtensaoNaoSuportada {
+        this.abrir(caminho);
+        this.reproduzir();
+    }
+    
+    public void pararSimples() {
+        this.parar();
+        this.liberar();
     }
     
 }
