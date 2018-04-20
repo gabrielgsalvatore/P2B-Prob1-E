@@ -60,6 +60,7 @@ public class Projeto2 implements FormatoAudio{
     @Override
     public void liberar() {
         this.arquivo.liberar();
+        this.arquivo = null;
     }
     
     public void reproduzirSimples(String caminho) throws ExtensaoNaoSuportada {
