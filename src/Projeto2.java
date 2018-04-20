@@ -1,3 +1,6 @@
+
+import java.util.regex.Pattern;
+
 /**
  * @author Vinícius Luis da Silva
  *         Pedro Henrique de Novaes
@@ -10,7 +13,7 @@ public class Projeto2 implements FormatoAudio{
     
     @Override
     public void abrir(String caminho) throws ExtensaoNaoSuportada {
-        String extensao = caminho.split(".")[caminho.split(".").length - 1];
+        String extensao = caminho.split(Pattern.quote("."))[caminho.split(Pattern.quote(".")).length - 1];
         
         switch (extensao) {
             case "aiff":
