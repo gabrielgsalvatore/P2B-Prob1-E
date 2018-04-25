@@ -1,10 +1,13 @@
 Factory - 
-creator - project2
+creator - project2 --> Prof. Marcel: a classe se chama Projeto2
 concreteCreator - objects
-
+--> Prof. Marcel: quem é produto?
+--> Prof. Marcel: não há realmente o padrão factory method implementado, pois a classe Projeto2 não possui um método que retorna um objeto de produto FormatoAudio.
 
 Facade - 
 facade - projeto2
+--> Prof. Marcel: a fachada não foi corretamente implementada, pois não deveria conter vários métodos, além de reproduzirSimples e pararSimples. Não deveria ser uma implementação da interface FormatoAudio.
 
-
-
+--> Prof. Marcel: e o mapeamento do padrão Adapter ?
+Por que os adaptadores (object) são subclasses de Projeto2? Que benefício traria esta herança?
+Por que há <adapter - AAC e MP3> e <object - AIFF, WAV e WMA>? Não deu tempo de corrigir tudo para <adapter>?
